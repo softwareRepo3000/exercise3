@@ -91,4 +91,3 @@ jobs:
 
       - name: Run the Image
         run: docker run --rm ghcr.io/${{ github.repository }}:${{ github.sha }} | grep -i hello || exit 1
-Review workflow results
