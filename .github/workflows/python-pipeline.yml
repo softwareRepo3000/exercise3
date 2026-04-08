@@ -1,3 +1,4 @@
+
 name: Python CI/CD Pipeline
 
 on: [push, workflow_dispatch]
@@ -85,9 +86,9 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-          
+
       - name: Pull the image from GitHub Container Registry
-        run: docker pull ghcr.io/${REPO_LOWER}:${{ github.sha }}
+        run: docker pull ghcr.io/${{ github.repository }}:${{ github.sha }}
 
       - name: Run the Image
-        run: docker run --rm ghcr.io/${REPO_LOWER}:${{ github.sha }} | grep -i hello || exit 1
+        run: docker run --rm ghcr.io/${{ github.repository }}:${{ github.sha }} | grep -i hello || exit 1
